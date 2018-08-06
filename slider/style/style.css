@@ -1,0 +1,38 @@
+body{
+	margin: 0;
+}
+
+.cont-img{
+	max-width: 1024;
+	width: auto;
+	max-height: 720px;
+	position: absolute;
+	background-color: gray;
+}
+
+.img{
+	height: 100%;
+	width: 100%;
+}
+
+.arrow{
+	position: absolute;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	cursor: pointer;
+}
+.arrow-img{
+	height: 28px;
+	width: 28px;
+	background-color: aqua;
+}
+.arrow-right-cont{
+	right: 0;
+}
+
+.arrow-left-cont{
+	left: 0;
+}
