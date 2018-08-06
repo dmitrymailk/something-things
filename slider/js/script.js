@@ -1,61 +1,67 @@
 let images = document.getElementsByClassName('img'),
-		arrowLeft = document.getElementsByClassName('arrow-left')[0],
-		arrowRight = document.getElementsByClassName('arrow-right')[0];
+		arrowLeft = document.getElementsByClassName('left')[0],
+		arrowRight = document.getElementsByClassName('right')[0];
 
-const slider = {
-	currentSlide: 0,
-	maxSlides: images.length - 1,
+console.log(images);		
 
-	slideRight: () => {
-		if(slider.currentSlide < slider.maxSlides){
-			slider.hideSlides();
-			slider.currentSlide++;
-			slider.showSlides();
+class Slider {
+
+	constructor(contImages){
+		this.maxSlides = contImages.length - 1;
+		this.contImages = contImages;
+		this.currentSlide = 0;
+		this.preparingSlides();
+	}
+
+
+	slideRight() {
+		if(this.currentSlide < this.maxSlides){
+			this.hideSlides();
+			this.currentSlide++;
+			this.showSlides();
 		}
-		else if(slider.currentSlide === slider.maxSlides){
-			slider.hideSlides();
-			slider.currentSlide = 0;
-			slider.showSlides();
+		else if(this.currentSlide === this.maxSlides){
+			this.hideSlides();
+			this.currentSlide = 0;
+			this.showSlides();
 		}
+	}
 
-
-	},
-
-	slideLeft: () => {
-		if(slider.currentSlide > 0){
-			slider.hideSlides();
-			slider.currentSlide--;
-			slider.showSlides();
+	slideLeft() {
+		if(this.currentSlide > 0){
+			this.hideSlides();
+			this.currentSlide--;
+			this.showSlides();
 		}
-		else if(slider.currentSlide === 0){
-			slider.hideSlides();
-			slider.currentSlide = slider.maxSlides;
-			slider.showSlides();
+		else if(this.currentSlide === 0){
+			this.hideSlides();
+			this.currentSlide = this.maxSlides;
+			this.showSlides();
 		}
-	},
+	}
 
-	preparingSlides: () => {
-		for(let i=1; i < slider.maxSlides + 1; i++ ){
-			images[i].style.display = 'none';
+	preparingSlides() {
+		for(let i=1; i < this.maxSlides + 1; i++ ){
+			this.contImages[i].style.display = 'none';
 		}
-	},
+	}
 
-	showSlides: () => {
-		images[slider.currentSlide].style.display = 'block';
-	},
+	showSlides() {
+		this.contImages[this.currentSlide].style.display = 'block';
+	}
 
-	hideSlides: () => {
-		images[slider.currentSlide].style.display = 'none';
+	hideSlides() {
+		this.contImages[this.currentSlide].style.display = 'none';
 	}
 
 };
 
-slider.preparingSlides();
+const slide = new Slider(images);
 
-arrowRight.addEventListener('click',  () => {
-	slider.slideRight();
+arrowRight.addEventListener('click', () =>{	
+	slide.slideRight();
 });
 
-arrowLeft.addEventListener('click', () => {
-	slider.slideLeft();
+arrowLeft.addEventListener('click', () =>{	
+	slide.slideLeft();
 });

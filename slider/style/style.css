@@ -25,8 +25,8 @@ body{
 	cursor: pointer;
 }
 .arrow-img{
-	height: 28px;
-	width: 28px;
+	height: 128px;
+	width: 128px;
 	background-color: aqua;
 }
 .arrow-right-cont{
@@ -35,4 +35,9 @@ body{
 
 .arrow-left-cont{
 	left: 0;
+}
+
+.slider1{
+	width: 500px;
+	height: 300px;
 }
